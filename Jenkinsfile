@@ -40,7 +40,7 @@ spec:
             }
 	  }
     }
-   /* stage('Unit Test') {
+   /*stage('Unit Test') {
 			steps {
 				container('gradle') {
 					//withMaven(maven: 'MAVEN-3.6.3') {
@@ -72,13 +72,13 @@ spec:
 			}
 		} 
 
-		/* stage('Code Quality') {
+		 stage('Code Quality') {
 			steps {
 				container('gradle') {
 					withMaven(maven: 'MAVEN-3.6.3') {
 						withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing code quality using sonarqube'	
-							sh 'mvn -f pom.xml sonar:sonar'
+							sh 'mvn -f sample-java-app/pom.xml sonar:sonar'
 						}
 						sleep(60)
 						timeout(time: 1, unit: 'MINUTES') {
@@ -87,7 +87,7 @@ spec:
 					}
 				}
 			}   
-		} */
+		} 
 
 		/* stage('Publish Package') {
             steps {
