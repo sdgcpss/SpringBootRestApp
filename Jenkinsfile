@@ -45,7 +45,7 @@ spec:
           	//withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
 							//sh 'mvn -f sample-java-app/pom.xml clean package'
-							sh './gradlew build'
+							sh '.\gradlew.bat build'
 				   	// }
 					// }
 				}
