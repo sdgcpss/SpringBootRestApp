@@ -61,7 +61,7 @@ spec:
 					withMaven(maven: 'MAVEN-3.6.3') {
           	withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
-							sh 'mvn -f pom.xml clean package'
+							sh 'mvn -f sample-java-app/pom.xml clean package'
 					               
 				   	}
 					}
@@ -86,7 +86,7 @@ spec:
 			}   
 		} */
 
-		 stage('Publish Package') {
+		/* stage('Publish Package') {
             steps {
 		    		container('gradle') {
 				withMaven(maven: 'MAVEN-3.6.3') {
