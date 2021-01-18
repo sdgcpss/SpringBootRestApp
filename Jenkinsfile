@@ -31,7 +31,7 @@ spec:
     stages {
     stage('check_gradle_version') {
             steps {
-                sh 'gradle --version'
+                sh 'gradle -v'
                 sh 'echo workspace is $WORKSPACE'
             }
     }
