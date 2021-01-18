@@ -55,7 +55,7 @@ spec:
 
 		stage('Code Quality') {
 			steps {
-				container('maven') {
+				container('gradle') {
 					withMaven(maven: 'MAVEN-3.6.3') {
 						withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing code quality using sonarqube'	
@@ -72,11 +72,13 @@ spec:
 
 		stage('Publish Package') {
             steps {
+		    		container('gradle') {
 				withMaven(maven: 'MAVEN-3.6.3') {
 					echo 'I am executing build and push the artifact with unique name showing the branch from which it is generated, to Archiva'	
 					sh 'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=pom.xml -DrepositoryId=snapshots -Durl=http://35.188.92.10/repository/snapshots/'
 				}		
             }
+	    }
         }
 		
 		/* stage('Deploy Dev') {
