@@ -1,6 +1,7 @@
 package com.kkjavatutorials.SpringBootRestApp;
 
-/* //import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -10,9 +11,9 @@ class SpringBootRestAppApplicationTests {
 	void contextLoads() {
 	}
 
-}*/
+}
 
-import static org.junit.Assert.*;
+/*import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
