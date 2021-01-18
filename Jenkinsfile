@@ -74,7 +74,7 @@ spec:
             steps {
 				withMaven(maven: 'MAVEN-3.6.3') {
 					echo 'I am executing build and push the artifact with unique name showing the branch from which it is generated, to Archiva'	
-					sh 'mvn -X deploy:deploy-file -Dfile=/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=pom.xml -DrepositoryId=snapshots -Durl=http://35.188.92.10/repository/snapshots/'
+					sh 'mvn -X deploy:deploy-file -Dfile=target/sample-0.0.1-SNAPSHOT.jar -DpomFile=pom.xml -DrepositoryId=snapshots -Durl=http://35.188.92.10/repository/snapshots/'
 				}		
             }
         }
