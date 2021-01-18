@@ -25,7 +25,7 @@ public class SampleApplicationTests {
 
 	@Test
 	public void passingTest() {
-		assertTrue(true);
+		
 	}
 	
 	@Test
