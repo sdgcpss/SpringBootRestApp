@@ -1,6 +1,6 @@
 plugins {
-	// id 'org.springframework.boot' version '2.3.2.RELEASE'
-	// id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	 id 'org.springframework.boot' version '2.3.2.RELEASE'
+	 id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	
 }
@@ -20,11 +20,11 @@ configurations {
 }
 
 dependencies {
-	// implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	configurations.compile.extendsFrom(configurations.extraLibs)
-	/*testImplementation('org.springframework.boot:spring-boot-starter-test') {
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}*/
+	}
 }
 
 /* test {
