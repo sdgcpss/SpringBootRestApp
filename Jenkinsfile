@@ -20,7 +20,7 @@ labels:
 spec:
   containers:
   - name: gradle
-    image: gradle:6.8.0-jdk8-alpine
+    image: gradle:3.5-jdk8-alpine
     command:
     - cat
     tty: true
@@ -45,7 +45,7 @@ spec:
           	//withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
 							//sh 'mvn -f sample-java-app/pom.xml clean package'
-							sh 'gradle clean build'
+							sh './gradlew build'
 				   	// }
 					// }
 				}
