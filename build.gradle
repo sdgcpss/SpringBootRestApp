@@ -22,7 +22,6 @@ configurations {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	configurations.compile.extendsFrom(configurations.extraLibs)
-	//classpath "gradle.plugin.com.github.onslip:gradle-one-jar:1.0.6"
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
