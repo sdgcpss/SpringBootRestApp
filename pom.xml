@@ -12,7 +12,7 @@
 	<artifactId>sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sample</name>
-	<description>SpringBootRestApp</description>
+	<description>Sample Java Application</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -33,15 +33,69 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
+	
+	
+	<distributionManagement>
+    		<repository>
+      			<id>internal</id>
+      			<name>Archiva Managed Internal Repository</name>
+      			<url>http://35.188.92.10/repository/internal/</url>
+    		</repository>
+    		<snapshotRepository>
+      			<id>snapshots</id>
+      			<name>Archiva Managed Snapshot Repository</name>
+      			<url>http://35.188.92.10/repository/snapshots/</url>
+    		</snapshotRepository>
+ 	</distributionManagement>
 
+	
+	
+
+
+	
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+    				<groupId>org.apache.httpcomponents</groupId>
+    				<artifactId>httpclient</artifactId>
+    				<version>4.5.3</version>
+			</plugin>
+			
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-http</artifactId>
+				<version>2.5</version>
+			</extension>
+		</extensions>
+			
 	</build>
+			
+	<pluginRepositories>
+    		<pluginRepository>
+      			<id>snapshots</id>
+      			<name>Archiva Managed Snapshot Repository</name>
+      			<url>http://35.188.92.10/repository/snapshots/</url>
+      			<releases>
+        			<enabled>false</enabled>
+      			</releases>
+      			<snapshots>
+        			<enabled>true</enabled>
+      			</snapshots>
+    		</pluginRepository>
+  	</pluginRepositories>
+		
+		
+		
+		
+	
 
 </project>
