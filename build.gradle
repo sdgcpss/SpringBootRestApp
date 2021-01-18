@@ -38,4 +38,4 @@ jar {
         }
 }
 
-apply plugin: "com.github.onslip.gradle-one-jar"
+
