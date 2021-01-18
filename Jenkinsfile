@@ -53,7 +53,7 @@ spec:
 			}
 		}
 
-		/* stage('Code Quality') {
+		stage('Code Quality') {
 			steps {
 				container('maven') {
 					withMaven(maven: 'MAVEN-3.6.3') {
