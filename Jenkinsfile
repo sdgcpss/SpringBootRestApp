@@ -55,7 +55,7 @@ spec:
 			}
 		}*/
 	    
-	 /* stage('Unit Test') {
+	  stage('Unit Test') {
 			steps {
 				container('gradle') {
 					withMaven(maven: 'MAVEN-3.6.3') {
