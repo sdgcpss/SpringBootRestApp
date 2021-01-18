@@ -35,10 +35,12 @@ spec:
                 sh 'gradle -v'
                 sh 'echo workspace is $WORKSPACE'
 		    sh "ls -la ${pwd()}"
+	          sh 'chmod 777 * '
+		sh './gradlew build'
             }
 	  }
     }
-    stage('Unit Test') {
+   /* stage('Unit Test') {
 			steps {
 				container('gradle') {
 					//withMaven(maven: 'MAVEN-3.6.3') {
@@ -49,6 +51,20 @@ spec:
 							sh './gradlew build'
 				   	// }
 					// }
+				}
+			}
+		}*/
+	    
+	     stage('Unit Test') {
+			steps {
+				container('gradle') {
+					withMaven(maven: 'MAVEN-3.6.3') {
+          	withSonarQubeEnv(installationName:'Sonarqube') {
+							echo 'I am executing unit test'
+							sh 'mvn -f pom.xml clean package'
+					               
+				   	}
+					}
 				}
 			}
 		}
