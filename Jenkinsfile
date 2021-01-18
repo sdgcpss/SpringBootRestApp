@@ -20,7 +20,7 @@ labels:
 spec:
   containers:
   - name: gradle
-    image: gradle:6.8.0-jdk8-alpine
+    image: gradle:3.5-jdk8-alpine
     command:
     - cat
     tty: true
