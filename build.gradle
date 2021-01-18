@@ -31,10 +31,6 @@ test {
 	useJUnitPlatform()
 }
 
-jar {
-    from {
-            configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
-        }
-}
+
 
 
