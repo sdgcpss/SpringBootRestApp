@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
-	id 'com.github.onslip.gradle-one-jar'
+	
 }
 
 group = 'com.kkjavatutorials'
@@ -37,3 +37,5 @@ jar {
             configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
         }
 }
+
+apply plugin: "com.github.onslip.gradle-one-jar"
