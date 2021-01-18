@@ -53,7 +53,7 @@ spec:
 			}
 		}
 
-		stage('Code Quality') {
+		/* stage('Code Quality') {
 			steps {
 				container('maven') {
 					withMaven(maven: 'MAVEN-3.6.3') {
@@ -68,18 +68,18 @@ spec:
 					}
 				}
 			}   
-		} 
+		} */
 
-		/*stage('Publish Package') {
+		stage('Publish Package') {
             steps {
 				withMaven(maven: 'MAVEN-3.6.3') {
 					echo 'I am executing build and push the artifact with unique name showing the branch from which it is generated, to Archiva'	
-					sh 'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=sample-java-app/pom.xml -DrepositoryId=snapshots -Durl=http://35.188.92.10/repository/snapshots/'
+					sh 'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=pom.xml -DrepositoryId=snapshots -Durl=http://35.188.92.10/repository/snapshots/'
 				}		
             }
         }
 		
-		stage('Deploy Dev') {
+		/* stage('Deploy Dev') {
 			when { branch 'dev'}
             steps {
 				echo "I am executing Deploy the artifact from Archiva to target dev environment. My artifact has a unique name which is automatically generated and deployed to target dev environment"
