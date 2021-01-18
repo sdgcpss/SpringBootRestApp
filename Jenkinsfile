@@ -1,11 +1,11 @@
 pipeline {
-    /* environment {
+    environment {
 		PROJECT_ID = "sd-devops"
 		APP_NAME = "sample-java-app"
 		CLUSTER_NAME = "cluster-1"
 		CLUSTER_ZONE = "us-central1-a"
 		CREDENTIALS_ID = "sd-devops"
-  	} */
+  	} 
 	//agent any 2
   agent {
     kubernetes {
@@ -31,10 +31,12 @@ spec:
     stages {
     stage('check_gradle_version') {
             steps {
+		    container('gradle') {
                 sh 'gradle -v'
                 sh 'echo workspace is $WORKSPACE'
-		    sh 'ls -lart'
+		    sh "ls -la ${pwd()}"
             }
+	  }
     }
    /* stage('Unit Test') {
 			steps {
