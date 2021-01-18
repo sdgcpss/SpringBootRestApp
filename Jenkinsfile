@@ -62,7 +62,7 @@ spec:
           	withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
 			sh "ls -la ${pwd()}"
-							sh 'mvn -f pom.xml clean package'
+							sh 'mvn -f sample-java-app/pom.xml clean package'
 			                                 
 			
 					               
