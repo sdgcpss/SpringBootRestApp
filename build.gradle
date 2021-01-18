@@ -2,6 +2,9 @@ plugins {
 	id 'org.springframework.boot' version '2.3.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'java-gradle-plugin'
+	id 'groovy'
+        id 'maven-publish'
 }
 
 group = 'com.kkjavatutorials'
@@ -9,7 +12,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
 repositories {
-	mavenCentral()
+	mavenCentral("http://35.188.92.10/#artifact/io.buildpacks.example/sample")
 }
 
 dependencies {
