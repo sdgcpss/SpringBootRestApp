@@ -36,7 +36,7 @@ spec:
                 sh 'echo workspace is $WORKSPACE'
 		    sh "ls -la ${pwd()}"
 	          sh 'chmod 777 * '
-		sh './gradlew build'
+		sh './gradlew compileJava'
             }
 	  }
     }
