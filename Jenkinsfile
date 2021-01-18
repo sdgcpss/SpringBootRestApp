@@ -68,7 +68,7 @@ spec:
 					}
 				}
 			}   
-		} */
+		} 
 
 		stage('Publish Package') {
             steps {
