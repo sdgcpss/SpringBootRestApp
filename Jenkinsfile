@@ -31,21 +31,18 @@ spec:
     stages {
     stage('check_gradle_version') {
             steps {
-		    
-		//sh './gradle -v'
-                //sh 'gradle -v'
-		  
+                sh 'gradle -v'
                 sh 'echo workspace is $WORKSPACE'
-		      sh ' echo "pwd" '
+		    sh 'ls -lart'
             }
     }
-    stage('Unit Test') {
+   /* stage('Unit Test') {
 			steps {
 				container('gradle') {
 					//withMaven(maven: 'MAVEN-3.6.3') {
           	//withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
-							sh 'mvn -f sample-java-app/pom.xml clean package'
+							//sh 'mvn -f sample-java-app/pom.xml clean package'
 				   	// }
 					// }
 				}
