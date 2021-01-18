@@ -67,10 +67,10 @@ spec:
 							echo 'I am executing code quality using sonarqube'	
 							sh 'mvn -f sample-java-app/pom.xml sonar:sonar'
 						}
-						/*sleep(60)
+						sleep(60)
 						timeout(time: 1, unit: 'MINUTES') {
 							waitForQualityGate abortPipeline: true
-						}*/
+						}			
 					}
 				}
 			}   
