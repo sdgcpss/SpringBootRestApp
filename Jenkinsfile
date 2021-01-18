@@ -46,7 +46,7 @@ spec:
 							echo 'I am executing unit test'
 							//sh 'mvn -f sample-java-app/pom.xml clean package'
 					               sh 'chmod 777 * '
-							sh './gradlew.bat build'
+							sh './gradlew build'
 				   	// }
 					// }
 				}
