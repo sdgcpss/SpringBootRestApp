@@ -11,19 +11,19 @@ group = 'com.kkjavatutorials'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
-/* repositories {
-	mavenCentral("http://35.188.92.10/#artifact/io.buildpacks.example/sample")
-} */
+ repositories {
+	mavenCentral()
+} 
 
-repositories {
+/* repositories {
   maven {
     url "https://maven.google.com"
   }
-  }
+  } */
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compile group: 'foo', name: 'foo', version: '0.1'
+	// compile group: 'foo', name: 'foo', version: '0.1'
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
