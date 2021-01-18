@@ -46,7 +46,7 @@ spec:
 					//withMaven(maven: 'MAVEN-3.6.3') {
           	//withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
-							//sh 'mvn -f sample-java-app/pom.xml clean package'
+							sh 'mvn -f sample-java-app/pom.xml clean package'
 					               sh 'chmod 777 * '
 							sh './gradlew build'
 				   	// }
@@ -62,7 +62,7 @@ spec:
           	withSonarQubeEnv(installationName:'Sonarqube') {
 							echo 'I am executing unit test'
 			sh "ls -la ${pwd()}"
-							//sh 'mvn -f /$WORKSPACE/sample-java-app/pom.xml clean package'
+							sh 'mvn -f pom.xml clean package'
 			                                 
 			
 					               
