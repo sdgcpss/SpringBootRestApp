@@ -29,8 +29,9 @@ spec:
 	}
   
     stages {
+	      parallel {
     stage('check_gradle_version') {
-	    parallel {
+	  
             steps {
 		    container('gradle') {
                 sh 'gradle -v'
