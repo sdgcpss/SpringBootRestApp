@@ -30,6 +30,7 @@ spec:
   
     stages {
     stage('check_gradle_version') {
+	    parallel {
             steps {
 		    container('gradle') {
                 sh 'gradle -v'
@@ -86,7 +87,7 @@ spec:
             }
 	    }
         }
-		
+    }	
 		/* stage('Deploy Dev') {
 			when { branch 'dev'}
             steps {
@@ -94,6 +95,7 @@ spec:
 				echo "Work in progress"
             }
         }
+	
 
 		stage('Smoke Test'){
 			when { branch 'dev'}
