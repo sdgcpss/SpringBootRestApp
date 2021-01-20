@@ -98,7 +98,8 @@ spec:
 		stage('Deploy') {
 			when { expression {!(env.GIT_BRANCH =~ /feature/ )}}
             steps {
-				echo "I am executing Deploy"					
+				echo "I am executing Deploy"
+		    echo "Deploy"
             }
         }
     	
