@@ -30,7 +30,7 @@ spec:
   
     stages {
     stage('check_gradle_version') {
-	    
+	    parallel {
             steps {
 		    container('gradle') {
                 sh 'gradle -v'
@@ -88,7 +88,7 @@ spec:
 	    }
         }
     	
-		/* stage('Deploy Dev') {
+		 stage('Deploy Dev') {
 			when { branch 'dev'}
             steps {
 				echo "I am executing Deploy the artifact from Archiva to target dev environment. My artifact has a unique name which is automatically generated and deployed to target dev environment"
@@ -103,6 +103,7 @@ spec:
 				echo "I am executing Smoke Test on target dev environment post deployment"
 				echo 'Work in progress'
 			}
-		} */
+		} 
 	}
+}
 }
