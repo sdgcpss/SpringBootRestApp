@@ -29,7 +29,9 @@ spec:
 	}
   
     stages {
+	    stage ('test') {
 	      parallel {
+		      
     stage('check_gradle_version') {
 	  
             steps {
@@ -61,6 +63,7 @@ spec:
 			}
 	  }
 	      }
+	    }
 
 		 stage('Code Quality') {
 			steps {
