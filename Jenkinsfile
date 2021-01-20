@@ -59,7 +59,8 @@ spec:
 					}
 				}
 			}
-		} 
+	  }
+	      }
 
 		 stage('Code Quality') {
 			steps {
@@ -122,4 +123,4 @@ spec:
 		} */
 	}
 }
-}
+
