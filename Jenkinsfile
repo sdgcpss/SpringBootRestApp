@@ -29,10 +29,11 @@ spec:
 	}
   
     stages {
-	    stage ('test')
-	     parallel {
+	    stage ('test') {
+	      parallel {
+		      
     stage('check_gradle_version') {
-	   
+	  
             steps {
 		    container('gradle') {
                 sh 'gradle -v'
@@ -60,8 +61,10 @@ spec:
 					}
 				}
 			}
-		} 
-	     }
+	  }
+	      }
+	    }
+
 		 stage('Code Quality') {
 			steps {
 				container('gradle') {
@@ -89,8 +92,23 @@ spec:
             }
 	    }
         }
+	    
+	    stage('Build') {
+			//GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+			when { expression {!(env.GIT_BRANCH =~ /feature/ )}}
+            steps {
+                sh 'I am executing build'
+            }
+        }
+		stage('Deploy') {
+			when { expression {!(env.GIT_BRANCH =~ /feature/ )}}
+            steps {
+				echo "I am executing Deploy"
+		    echo "Deploy"
+            }
+        }
     	
-		 stage('Deploy Dev') {
+		 /* stage('Deploy Dev') {
 			when { branch 'dev'}
             steps {
 				echo "I am executing Deploy the artifact from Archiva to target dev environment. My artifact has a unique name which is automatically generated and deployed to target dev environment"
@@ -98,14 +116,12 @@ spec:
             }
         }
 	
-
 		stage('Smoke Test'){
 			when { branch 'dev'}
 			steps {
 				echo "I am executing Smoke Test on target dev environment post deployment"
 				echo 'Work in progress'
 			}
-		} 
+		} */
 	}
-}
 }
