@@ -87,14 +87,14 @@ spec:
             }
 	    }
         }
-    }	
+    	
 		/* stage('Deploy Dev') {
 			when { branch 'dev'}
             steps {
 				echo "I am executing Deploy the artifact from Archiva to target dev environment. My artifact has a unique name which is automatically generated and deployed to target dev environment"
 				echo "Work in progress"
             }
-        
+        }
 	
 
 		stage('Smoke Test'){
