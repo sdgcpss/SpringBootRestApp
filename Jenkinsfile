@@ -11,8 +11,7 @@ pipeline {
 		kubernetes {
 			label 'SpringBootRestApp'
 			defaultContainer 'jnlp'
-			yaml ""
-			"
+			yaml """
 			apiVersion: v1
 			kind: Pod
 			metadata:
@@ -24,8 +23,8 @@ pipeline {
 			image: gradle: 3.5 - jdk8 - alpine
 			command:
 				-cat
-			tty: true ""
-			"
+			tty: true
+			"""
 		}
 	}
 	stages {
