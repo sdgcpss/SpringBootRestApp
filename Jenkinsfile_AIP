@@ -30,8 +30,7 @@ spec:
 	}
   
     stages {
-     parallel {
-         stage ('test'){
+    
     stage('check_gradle_version') {
             steps {
 		    container('gradle') {
@@ -61,8 +60,7 @@ spec:
 				}
 			}
 		} 
-		}
-		}
+		
 
 		 stage('Code Quality') {
 			steps {
