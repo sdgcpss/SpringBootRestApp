@@ -76,7 +76,7 @@ spec:
 			}   
 		} 
 
-		stage('Publish Package') {
+		/*stage('Publish Package') {
             steps {
 		    		container('gradle') {
 				withMaven(maven: 'MAVEN-3.6.3') {
