@@ -5,7 +5,7 @@ pipeline {
 		CLUSTER_NAME = "cluster-1"
 		CLUSTER_ZONE = "us-central1-a"
 		CREDENTIALS_ID = "sd-devops"
-		GRADLE_TASK = 'compileJava processResources classes bootJar assemble compileTestJava processTestResources testClasses test check build'
+		GRADLE_TASK = 'compileJava processResources classes bootJar assemble processTestResources testClasses check build'
   	} 
 	//agent any 2
   agent {
