@@ -40,7 +40,7 @@ spec:
 	         echo $branch_name
 	       
 	       '''
-	       git branch: '$branch_name'
+	       git $branch_name
                 //git branch: 'master', credentialsId: 'git_creds', url: 'https://github.com/sdgcpsb/SpringBootRestApp.git'
             }
         }
