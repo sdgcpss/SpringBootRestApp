@@ -6,6 +6,7 @@ pipeline {
 		CLUSTER_ZONE = "us-central1-a"
 		CREDENTIALS_ID = "sd-devops"
 		GRADLE_TASK = "compileJava"
+		
   	} 
 	//agent any 2
   agent {
@@ -30,6 +31,12 @@ spec:
 	}
   
     stages {
+    
+          stage('SCM Checkout') {
+            steps {
+                git branch: 'master', credentialsId: 'git_creds', url: 'https://github.com/sdgcpsb/SpringBootRestApp.git'
+            }
+        }
 			stage('check_gradle_version') {
 				steps {
 					container('gradle') {
