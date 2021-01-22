@@ -1,0 +1,15 @@
+stage('Build'){
+when{
+    anyOf{
+        allOf {
+  expression{env.BRANCH_NAME != 'master'}
+  expression{env.AUTO_BUILD == true && env.BUILD_OPT == snapshot && env.BRANCH_NAME !=~ /feature.+/} 
+}
+        expression{env.AUTO_BUILD == false}
+    }
+}
+steps{
+    echo env.AUTO_BUILD
+    echo env.BUILD_OPT
+    echo env.BRANCH_NAME
+}
