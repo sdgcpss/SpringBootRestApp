@@ -70,8 +70,48 @@ spec:
 				}
 			}
 		}
-	
-	stage('Publish Package') {
+		stage ("Deploy") {
+              steps {
+                  container ('gradle') {
+                      sh '''
+                     
+                      deploy=`cat project.properties | grep "feature_deploy" | cut -d'=' -f2 | awk  '{print $1}' `
+                      
+                       
+                      if test "$deploy" = true
+                      then
+                          echo " im deploying"
+			  withMaven(maven: 'MAVEN-3.6.3') {
+		      echo 'I am executing build and push the artifact with unique name showing the branch from which it is generated, to Archiva'
+		      sh 'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=sample-java-app/pom.xml -DrepositoryId=snapshots -Durl=https://archiva.sgn.devops.accentureanalytics.com/repository/snapshots/'
+                          else 
+                      echo "no need"
+                      fi
+                      
+                      server_list=`cat project.properties | grep "servers" | cut -d'=' -f2 `
+                      echo $server_list
+		      
+                      for server in $server_list
+                      
+                      do
+                      
+                      echo $server
+                      done
+                      
+                          
+                      
+                      '''
+		           }
+              }
+          }
+          stage ("use env vars") {
+              steps {
+                  sh "printenv | sort"
+                  echo "BUILD_NUMBER = ${env.BUILD_NUMBER}"
+                  echo "BRANCH_NAME = ${env.BRANCH_NAME}"
+              }
+          }
+	/*  stage('Publish Package') {
 		steps {
 			container('gradle') {
 				withMaven(maven: 'MAVEN-3.6.3') {
@@ -80,7 +120,9 @@ spec:
 				}
 			}
 		}
-	}
+	} */
+	
+	
 	/* stage('Deploy Dev') {
 	when { branch 'dev'}
 	steps {
