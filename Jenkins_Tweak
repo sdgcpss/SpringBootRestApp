@@ -1,5 +1,7 @@
 pipeline {
-agent {
+ 
+	//agent any 2
+  agent {
     kubernetes {
       label 'SpringBootRestApp'
       defaultContainer 'jnlp'
