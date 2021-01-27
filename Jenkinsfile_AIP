@@ -81,9 +81,9 @@ spec:
                       if test "$deploy" = true
                       then
                           echo " im deploying"
-			  withMaven(maven: 'MAVEN-3.6.3') {
+			  /* withMaven(maven: 'MAVEN-3.6.3') {
 		      echo 'I am executing build and push the artifact with unique name showing the branch from which it is generated, to Archiva'
-		      'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=sample-java-app/pom.xml -DrepositoryId=snapshots -Durl=https://archiva.sgn.devops.accentureanalytics.com/repository/snapshots/'
+		      'mvn -X deploy:deploy-file -Dfile=sample-java-app/target/sample-0.0.1-SNAPSHOT.jar -DpomFile=sample-java-app/pom.xml -DrepositoryId=snapshots -Durl=https://archiva.sgn.devops.accentureanalytics.com/repository/snapshots/' */
                           else 
                       echo "no need"
                       fi
