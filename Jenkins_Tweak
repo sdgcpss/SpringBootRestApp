@@ -1,0 +1,91 @@
+pipeline {
+agent {
+    kubernetes {
+      label 'SpringBootRestApp'
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+labels:
+  component: ci
+spec:
+  containers:
+  - name: gradle
+    image: gradle:3.5-jdk8-alpine
+    command:
+    - cat
+    tty: true
+"""
+}
+	}
+  
+    stages {
+    
+          stage('SCM Checkout') {
+            steps {
+                
+                
+               
+       //git branch: 'feature', credentialsId: 'git_creds', url: 'https://github.com/sdgcpsb/SpringBootRestApp.git'
+                     
+               script {
+                   propfile = readProperties(file: './project.properties')
+               println ("reading properties ...")
+println ("branch_name:"+ propfile['deploy']) 
+                   
+               }    
+            
+                 }
+                
+                
+                  
+                }
+          
+          
+          
+          stage ("Deploy") {
+              steps {
+                  container ('gradle') {
+                      sh '''
+                     
+                      deploy=`cat project.properties | grep "feature_deploy" | cut -d'=' -f2 | awk  '{print $1}' `
+                      
+                       
+                      if test "$deploy" = true
+                      then
+                          echo " im deploying"
+                          else 
+                      echo "no need"
+                      fi
+                      
+                      server_list=`cat project.properties | grep "servers" | cut -d'=' -f2 `
+                      echo $server_list
+                      for server in $server_list
+                      
+                      do
+                      
+                      echo $server
+                      done
+                      
+                          
+                      
+                      '''
+                      
+                      
+                  
+              }
+              }
+          }
+          stage ("use env vars") {
+              steps {
+                  sh "printenv | sort"
+                  echo "BUILD_NUMBER = ${env.BUILD_NUMBER}"
+                  echo "BRANCH_NAME = ${env.BRANCH_NAME}"
+              }
+          }
+          
+          
+              }
+}
+	       
