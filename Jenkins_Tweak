@@ -27,14 +27,14 @@ spec:
                 
                 
                
-       //git branch: 'feature', credentialsId: 'git_creds', url: 'https://github.com/sdgcpsb/SpringBootRestApp.git'
+      /* //git branch: 'feature', credentialsId: 'git_creds', url: 'https://github.com/sdgcpsb/SpringBootRestApp.git'
                      
                script {
                    propfile = readProperties(file: './project.properties')
                println ("reading properties ...")
 println ("branch_name:"+ propfile['deploy']) 
                    
-               }    
+               }   */ 
             
                  }
                 
