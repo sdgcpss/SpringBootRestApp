@@ -81,19 +81,35 @@ spec:
 			}
 		}
 	}
-	/* stage('Deploy Dev') {
-	when { branch 'dev'}
-	steps {
-	echo "I am executing Deploy the artifact from Archiva to target dev environment. My artifact has a unique name which is automatically generated and deployed to target dev environment"
-	echo "Work in progress"
-	}
-	}
-	stage('Smoke Test'){
-	when { branch 'dev'}
-	steps {
-	echo "I am executing Smoke Test on target dev environment post deployment"
-	echo 'Work in progress'
-	}
-	} */
+   stage ('Stop_ESB') {
+      steps {
+        echo 'shutting down the tomcat ESB server'
+       // sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "$ESB_BIN_PATH stop || sleep 20"'
+        echo 'force stop any remaining mule process'
+       // sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "if [[ $(ps aux | grep /opt/mule/latest/ | grep -vc grep)  > 0 ]]; then "kill -9 $(ps -ef|pgrep -f "/opt/mule/latest/bin")"; else echo "do nothing"; fi"'
+        echo 'tomcat server stopped'
+      }
+    }
+    stage ('Deploy_ESB') {
+      steps {
+        echo 'copying the tar file from jenkins to deployment directory on app and remove the old folders and untarring the new jar and war files'
+	
+        /*sh 'scp -rp $WORKSPACE/artifacts/artifact.tar $DEPLOYMENT_USER@$DEPOYMENT_SERVER:$DEPLOYMENT_STAGE_DIR/'
+        sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "cd $DEPLOYMENT_STAGE_DIR && rm -rf *.war *.jar"'
+        sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "cd $DEPLOYMENT_STAGE_DIR && tar -xvzf artifact.tar && rm -rf *.jar"'
+        sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "cd $DEPLOYMENT_DIR && rm -rf $ESB_WAR_FOLDERS && cp -rp $DEPLOYMENT_STAGE_DIR/*.war $DEPLOYMENT_DIR"' */
+        echo 'Deployment has been completed'
+      }
+    }
+    stage ('Start_ESB') {
+      steps {
+        echo 'starting the tomcat ESB server'
+        /*sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "$ESB_BIN_PATH start"'
+        sh 'ssh $DEPLOYMENT_USER@$DEPOYMENT_SERVER "sleep 20"'*/
+        echo 'tomcat server started'
+      }
+
+    }     
+
 }
 }
